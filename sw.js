@@ -25,8 +25,8 @@ self.addEventListener("install", event => {
             .then(cache => {
                 cache.addAll(urlsToCache)
                     .then(() => self.skipWaiting())
+                    .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
     )
 });
 
@@ -44,7 +44,7 @@ self.addEventListener("activate", event => {
                     })
                 )
             })
-            .then(() => self.claim())
+            .then(() => self.clients.claim())
     );
 });
 
